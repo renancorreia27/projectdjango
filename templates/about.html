@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block about %} <!--Permite que páginas filhas sobrescrevam os itens da página principal (devem ter o mesmo nome)-->
+  <h1>About Page</h1>
+  <p>{{ my_text }}</p>
+  <p>The number is: {{ my_number }}</p>
+  <p>{{my_list}}</p>
+
+  <ul>
+    {% for item in my_list %} <!--Loop para iterar sobre uma lista-->
+        {% if item == 456 %}
+            <li>
+                {{forloop.counter}} - {{ item|add:10 }} <!--forloop.counter fornece o índice atual do loop-->
+            </li>
+        {% elif item == 123 %}
+            <li>
+                {{forloop.counter}} - {{ item|add:10 }} <!--forloop.counter fornece o índice atual do loop-->
+            </li>
+        {% else %}
+            <li>
+                {{forloop.counter}} - {{ item }} <!--forloop.counter fornece o índice atual do loop-->
+            </li>
+        {% endif %}
+    {% endfor %}
+  </ul>
+{% endblock%}
